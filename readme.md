@@ -1,3 +1,5 @@
+dotnet run --project Overflow.AppHost
+
 # Overflow Readme
 
 [https://aspire.dev/docs/](Aspire)
@@ -34,13 +36,10 @@ dotnet run --project Overflow.AppHost
 
 [https://aspire.dev/integrations/security/keycloak/](Keycloak)
 
-Add the following packages to the Overflow.AppHost project:
+Add the following package to the Overflow.AppHost project:
 
 Hosting integration:
 dotnet add package Aspire.Hosting.Keycloak --prerelease
-
-Client integration:
-dotnet add package Aspire.Keycloak.Authentication
 
 ### Keycloak Configuration
 
@@ -57,6 +56,9 @@ dotnet add package Aspire.Keycloak.Authentication
 ### Github Repository
 
 ```bash
+
+dotnet new gitignore
+
 # Create git repo and first commit:
 git init
 git add .
@@ -71,3 +73,25 @@ git branch -M main
 git push -u origin main
 https://github.com/emre-mumcu/Overflow.git
 ```
+
+### Question Service
+
+Overflow\services> dotnet new webapi -n QuestionService --use-controllers --no-https
+Overflow> dotnet sln add .\services\QuestionService\QuestionService.csproj
+Overflow> dotnet add Overflow.AppHost reference .\services\QuestionService\QuestionService.csproj  
+Overflow> dotnet add .\services\QuestionService\ reference .\Overflow.ServiceDefaults\Overflow.ServiceDefaults.csproj
+
+Add the following package to the QuestionService project:
+
+Client integration:
+dotnet add package Aspire.Keycloak.Authentication --prerelease
+
+### User Secrets
+
+
+
+
+
+
+
+dotnet run --project Overflow.AppHost

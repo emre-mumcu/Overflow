@@ -86,6 +86,25 @@ Add the following package to the QuestionService project:
 Client integration:
 dotnet add package Aspire.Keycloak.Authentication --prerelease
 
+### Adding a Database
+
+dotnet tool install --global dotnet-ef
+
+[https://aspire.dev/integrations/databases/postgres/postgres-get-started/](PostgreSQL integration)
+
+Hosting integration to the Overflow.AppHost project:
+Overflow\Overflow.AppHost> dotnet add package Aspire.Hosting.PostgreSQL
+
+Client integration to the QuestionService:
+Overflow\services\QuestionService> dotnet add package Aspire.Npgsql.EntityFrameworkCore.PostgreSQL
+
+To use Migrations in QuestionService:
+Overflow\services\QuestionService> dotnet add package Microsoft.EntityFrameworkCore.Design
+
+#### Migrations
+
+Overflow\services\QuestionService> dotnet ef migrations add InitialCreate -o Data/Migrations
+
 ### User Secrets
 
 
